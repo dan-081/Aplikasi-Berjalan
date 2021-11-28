@@ -1,27 +1,11 @@
-#rendering
-#basick looping
-#display object
-#display images
-#implement object oriented to the code
-#introduce classes and objects into our code
-#create game object class
-
-#implemet player caracter class
-#implement movement
-
-#implemet enemy character class
-#bounds cheking
-
 import pygame
 
-#MENGATUR UKURAN LAYAR
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
-SCREEN_TITLE = 'Cross The Road'
+SCREEN_TITLE = 'STOP&RUN'
 
 clock = pygame.time.Clock()
 
-#MENGATUR WARNA BACKGROUND (RGB CODE)
 WHITE_COLOR = (255, 255, 255)
 BALCK_COLOR = (0, 0, 0)
 
@@ -31,12 +15,11 @@ font = pygame.font.SysFont('ComicSans', 75)
 class Game:
     TICK_RATE = 60
 
-    def __init__(self, image_path, title,width,height ):  #constucture
+    def __init__(self, image_path, title,width,height ):  
         self.title = title
         self.width = width
         self.height = height
 
-        # MENAMPILKAN SCREEN
         self.game_screen = pygame.display.set_mode((width, height))
         self.game_screen.fill(WHITE_COLOR)
         pygame.display.set_caption(title)
@@ -62,7 +45,7 @@ class Game:
         onepiece = GameObject('asset/onepiece.png',375, 50, 50, 50)
 
         while not is_game_over:
-            for event in pygame.event.get():  # perulangan
+            for event in pygame.event.get():  
                 if event.type == pygame.QUIT:
                     is_game_over = True
                 elif event.type == pygame.KEYDOWN:
@@ -174,6 +157,3 @@ new_game.run_game_loop(1)
 #keluar dari program
 pygame.quit()
 quit()
-
-#pygame.draw.rect(game_screen, BALCK_COLOR, [350,350,100,100])
-#pygame.draw.circle(game_screen, BALCK_COLOR, (400,300),50)
