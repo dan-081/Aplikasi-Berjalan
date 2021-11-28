@@ -19,11 +19,9 @@ class Game:
         self.title = title
         self.width = width
         self.height = height
-
         self.game_screen = pygame.display.set_mode((width, height))
         self.game_screen.fill(WHITE_COLOR)
         pygame.display.set_caption(title)
-
         background_image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(background_image, (width, height))
 
@@ -31,17 +29,13 @@ class Game:
         is_game_over = False
         did_win = False
         direction = 0
-
         player_character = PlayerCharacter('asset/pemain.png', 375, 700, 50, 50)
         enemy_0 = EnemyCharacter('asset/musuh1.png', 20, 600, 50, 50)
         enemy_0.SPEED *= level_speed
-
         enemy_1 = EnemyCharacter('asset/musuh2.png', self.width - 40, 400, 50, 50)
         enemy_1.SPEED *= level_speed
-
         enemy_2 = EnemyCharacter('asset/musuh3.png', 20, 50, 50, 50)
         enemy_2.SPEED *= level_speed
-
         onepiece = GameObject('asset/onepiece.png',375, 50, 50, 50)
 
         while not is_game_over:
@@ -64,7 +58,6 @@ class Game:
             onepiece.draw(self.game_screen)
             player_character.move(direction)
             player_character.draw(self.game_screen)
-
             enemy_0.move(self.width)
             enemy_0.draw(self.game_screen)
 
@@ -91,7 +84,6 @@ class Game:
                 pygame.display.update()
                 clock.tick(1)
                 break
-
             pygame.display.update()
             clock.tick(self.TICK_RATE)
 
@@ -104,10 +96,8 @@ class GameObject:
     def __init__(self, image_path, x, y, width, height):
         self.x_pos = x
         self.y_pos = y
-
         self.width = width
         self.height = height
-
         object_image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(object_image,(width, height))
 
@@ -149,11 +139,10 @@ class EnemyCharacter(GameObject):
         elif self.x_pos >= max_width - 48:
             self.SPEED = -abs(self.SPEED)
         self.x_pos += self.SPEED
-
+        
 pygame.init()
 new_game = Game('asset/background.png', SCREEN_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT)
 new_game.run_game_loop(1)
 
-#keluar dari program
 pygame.quit()
 quit()
